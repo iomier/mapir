@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Flex, Input, Button, Box, Text, Spinner } from "theme-ui";
+import { Flex, Box, Text, Spinner } from "theme-ui";
 import Page from "../components/Page";
 import axios from "axios";
 import { apiKey } from "../shared/constants";
@@ -8,7 +7,6 @@ import Map from "../components/Map";
 import Search from "../components/Search";
 import Modal from "react-modal";
 import Details from "../components/Details";
-
 PageThree.propTypes = {};
 const fetchSearch = async (text) => {
   const res = await axios.post(
@@ -31,9 +29,6 @@ function PageThree(props) {
   const [loading, setLoading] = useState(false);
   const [current, setCurrent] = useState({});
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
   function closeModal() {
     setIsOpen(false);
   }
@@ -81,13 +76,21 @@ function PageThree(props) {
           mt={3}
         >
           {result.length > 0 ? (
-            result.map((entity) => (
-              <Box as={"ul"}>
-                <Text onClick={() => _handleModal(entity)} my={3} as={"li"}>
+            <Box as={"ul"}>
+              {result.map((entity, i) => (
+                <Text
+                  onClick={() => _handleModal(entity)}
+                  my={3}
+                  as={"li"}
+                  css={`
+                    cursor: pointer;
+                  `}
+                  key={i}
+                >
                   {entity.address}
                 </Text>
-              </Box>
-            ))
+              ))}
+            </Box>
           ) : (
             <Text p={2}>
               عبارت مورد نظر را برای جستجو در کادر بالا وارد کنید.
@@ -99,6 +102,7 @@ function PageThree(props) {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
+        ariaHideApp={false}
       >
         <Map
           lng={current?.geom?.coordinates[0]}

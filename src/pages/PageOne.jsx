@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Box, Flex, Heading, Link } from "theme-ui";
-import { Link as RouterLink } from "react-router-dom";
+import { Flex } from "theme-ui";
 import Page from "../components/Page";
 import Card from "../components/Card";
+
 PageOne.propTypes = {};
 
-function PageOne(props) {
+function PageOne() {
   return (
     <Page>
       <Flex

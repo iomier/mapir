@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Button, Flex, Input } from "theme-ui";
 
 Search.propTypes = {};
 
 function Search(props) {
   const [term, setTerm] = useState("");
-  const [result, setResult] = useState([]);
-  const [loading, setLoading] = useState(false);
   const _handleChange = (e) => setTerm(e.target.value);
   const { _handleSubmit } = props;
   return (

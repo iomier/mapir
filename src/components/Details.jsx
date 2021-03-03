@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Box, Flex, Heading, Text } from "theme-ui";
+import { Box, Heading, Text } from "theme-ui";
 
 Details.propTypes = {};
 

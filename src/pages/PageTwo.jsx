@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState } from "react";
 import Page from "../components/Page";
-import { Box, Text, Heading, Flex } from "theme-ui";
+import { Box, Text, Flex } from "theme-ui";
 import Map from "../components/Map";
 import Details from "../components/Details";
 

@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Flex, Link } from "theme-ui";
 import { Link as RouterLink } from "react-router-dom";
 import routes from "../routes";
 
 Nav.propTypes = {};
 
-function Nav(props) {
+function Nav() {
   return (
     <Flex
       css={`

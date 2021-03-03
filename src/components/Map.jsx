@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
 import { Box } from "theme-ui";
 import axios from "axios";
 import { apiKey } from "../shared/constants";
@@ -23,14 +22,13 @@ if (mapboxgl.getRTLTextPluginStatus() !== "loaded") {
   );
 }
 function Map(props) {
-  const { state, setters, containerOptions = {} } = props;
+  const { setters, containerOptions = {} } = props;
   const [lng, setLng] = useState(props.lng || 51.42047);
   const [lat, setLat] = useState(props.lat || 35.729054);
   const [zoom, setZoom] = useState(props.zoom || 12);
   const mapContainer = useRef(null);
   const delayedFnRef = useRef();
   const { setLocationResult = null } = setters;
-  const [err, setErr] = useState("");
   async function getLocationStatus() {
     try {
       const res = await axios.get(
@@ -43,7 +41,7 @@ function Map(props) {
       );
       setLocationResult && setLocationResult(res.data);
     } catch (e) {
-      setErr(e);
+      console.log(e);
     }
   }
 
