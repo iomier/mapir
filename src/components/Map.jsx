@@ -46,6 +46,7 @@ function Map(props) {
   }
 
   delayedFnRef.current = getLocationStatus;
+  // eslint-disable-next-line
   const delayedRequest = useCallback(
     debounce(() => delayedFnRef.current(), 300),
     []
@@ -73,10 +74,12 @@ function Map(props) {
       setLat(e.lngLat.lat.toFixed(4));
     });
     return () => map.remove();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     delayedRequest();
+    // eslint-disable-next-line
   }, [lat, lng]);
   return (
     <Box
